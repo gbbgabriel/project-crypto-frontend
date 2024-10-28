@@ -1,6 +1,10 @@
 {
   "name": "able-pro-angular-material",
   "version": "2.3.1",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +15,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint-fix": "ng lint --fix",
-    "prettier": "prettier --write ./src"
+    "prettier": "prettier --write ./src",
+    "postinstall": "npm install --legacy-peer-deps"
   },
   "private": true,
   "dependencies": {
