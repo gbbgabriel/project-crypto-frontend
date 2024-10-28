@@ -72,7 +72,8 @@ export class LoginComponent implements OnInit {
           });
         },
         (error) => {
-          this.error = error;
+          console.log(error);
+          this.error = error.error?.message || 'Credenciais incorretas. Verifique seu e-mail e senha.';
           this.loading = false;
         }
       );

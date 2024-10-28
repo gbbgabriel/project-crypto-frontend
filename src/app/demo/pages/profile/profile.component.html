@@ -6,7 +6,7 @@
           <div class="account-info">
             <div class="user-status">
               <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item (click)="editUser()">Edit</button>
+                <button mat-menu-item (click)="editUser()">Editar</button>
               </mat-menu>
             </div>
             <div class="text-center m-t-15">
@@ -16,8 +16,8 @@
               <div class="f-16 f-w-600 text-primary-500">{{ userForm.get('name')?.value }}</div>
               <p class="text-muted">{{ userForm.get('email')?.value }}</p>
               <mat-divider class="m-y-15"></mat-divider>
+              <button mat-button color="warn" (click)="deleteUser()">Excluir Conta</button>
             </div>
-            <mat-divider class="m-y-15"></mat-divider>
           </div>
         </app-card>
       </div>

@@ -4,7 +4,7 @@ import { BackSvgComponent } from '../application/profile/user-profiles/back-svg/
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TopSvgComponent } from '../application/profile/user-profiles/top-svg/top-svg.component';
 import { FormBuilder, ReactiveFormsModule, FormsModule, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth/authentication-1/login/services/auth.service';
@@ -47,6 +47,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private router: Router,
     private readonly cryptoService: CryptoService
   ) {}
 
@@ -130,4 +131,26 @@ export class ProfileComponent implements OnInit {
       maximumFractionDigits: 2,
     }).format(value);
   }
+
+  deleteUser() {
+    const confirmDelete = window.confirm('Tem certeza de que deseja excluir sua conta? Esta ação é irreversível.');
+
+    if (confirmDelete) {
+      this.authService.deleteUser().subscribe({
+        next: () => {
+          alert('Conta excluída com sucesso');
+
+          setTimeout(() => {
+            this.router.navigateByUrl('/authentication-1/login').then(() => {
+              window.location.reload();
+            });
+          }, 500);
+        },
+        error: (err) => {
+          console.error('Erro ao excluir a conta:', err);
+        }
+      });
+    }
+  }
+
 }

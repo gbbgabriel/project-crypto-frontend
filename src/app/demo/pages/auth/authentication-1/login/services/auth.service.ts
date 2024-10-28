@@ -57,4 +57,20 @@ export class AuthService {
       })
     );
   }
+
+  deleteUser(): Observable<void> {
+    const currentUser = this.currentUserValue;
+
+    if (!currentUser || !currentUser.id) {
+      throw new Error('Usuário não encontrado para deletar.');
+    }
+
+    const userId = currentUser.id;
+
+    return this.http.delete<void>(`${environment.baseUrl}/user/${userId}`).pipe(
+      map(() => {
+        this.logout();
+      })
+    );
+  }
 }

@@ -7,8 +7,8 @@ import packageInfo from '../../package.json';
 export const environment = {
   appVersion: packageInfo.version,
   production: false,
-  apiUrl: 'https://mock-data-api-nextjs.vercel.app',
-  baseUrl: 'http://localhost:3000',
+  apiUrl: 'http://104.131.80.141:3000',
+  baseUrl: 'http://104.131.80.141:3000',
 };
 
 /*

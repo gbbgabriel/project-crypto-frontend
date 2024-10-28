@@ -10,14 +10,12 @@
     "start": "ng serve",
     "build-stage": "ng build --configuration production --base-href /angular/stage/",
     "build-prod": "ng build --configuration production --base-href /angular/default/",
-    "build": "npm npm install --force --legacy-peer-deps && ng build",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "lint-fix": "ng lint --fix",
-    "prettier": "prettier --write ./src",
-    "preinstall": "npm install --legacy-peer-deps || npm install -f",
-    "postinstall": "npm install --f"
+    "prettier": "prettier --write ./src"
   },
   "private": true,
   "dependencies": {

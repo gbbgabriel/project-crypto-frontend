@@ -1,19 +1,30 @@
-# AblePro
+# Projeto de Frontend para Conversão de Criptomoedas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+Este projeto é o frontend de uma aplicação de criptomoedas, desenvolvido com o template AblePro e gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 15.1.3. O AblePro oferece uma base visual moderna e responsiva, ideal para projetos robustos e personalizáveis.
 
-## Development server
+## Servidor de Desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Execute `ng serve` para iniciar o servidor de desenvolvimento. Navegue para `http://localhost:4200/`. A aplicação será recarregada automaticamente ao alterar qualquer arquivo fonte.
 
-## Code scaffolding
+## Instalação de Dependências
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para instalar as dependências, execute:
+
+```bash
+npm install -f
+```
+
+> O parâmetro `-f` é necessário para forçar a instalação, caso ocorra algum conflito de dependências.
+
+## Estrutura do Código
+
+Use `ng generate component component-name` para gerar um novo componente. Também é possível utilizar `ng generate directive|pipe|service|class|guard|interface|enum|module` para outros scaffolds de código.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng build` para compilar o projeto. Os artefatos de build serão armazenados no diretório `dist/`.
 
-## Further help
+## Ajuda Adicional
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para obter mais ajuda sobre o Angular CLI, utilize `ng help` ou acesse a [Documentação Oficial do Angular CLI](https://angular.io/cli).
+
