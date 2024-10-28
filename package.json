@@ -10,7 +10,7 @@
     "start": "ng serve",
     "build-stage": "ng build --configuration production --base-href /angular/stage/",
     "build-prod": "ng build --configuration production --base-href /angular/default/",
-    "build": "ng build",
+    "build": "npm npm install --force --legacy-peer-deps && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
