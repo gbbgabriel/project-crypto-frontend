@@ -16,7 +16,7 @@
     "lint": "ng lint",
     "lint-fix": "ng lint --fix",
     "prettier": "prettier --write ./src",
-    "postinstall": "npm install --legacy-peer-deps"
+    "postinstall": "npm install --f"
   },
   "private": true,
   "dependencies": {
