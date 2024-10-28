@@ -1,0 +1,56 @@
+<div class="auth-main">
+  <div class="auth-wrapper version-1">
+    <div class="auth-form">
+      <div class="auth-background">
+        <div class="yellow-circle"></div>
+        <div class="red-circle"></div>
+      </div>
+      <div class="main-form">
+        <app-card [showHeader]="false" class="auth-form-card" padding="40">
+          <div class="text-center">
+            <a href="javascript:">
+              <img src="assets/images/logo-dark.png" alt="logo" style="width: 146px" />
+            </a>
+          </div>
+          <div class="separator"></div><br/>
+          <div class="text-center m-b-25 f-20 f-w-500">Faça login com seu e-mail</div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="text-start">
+            <label for="name" class="f-w-500 text-start">Insira Seu Email</label>
+            <mat-form-field appearance="outline" class="w-100 m-t-5">
+              <input type="text" matInput formControlName="email" [ngClass]="{ 'is-invalid': submitted && formValues?.['email'].errors }" />
+              @if (submitted && formValues?.['email'].errors) {
+                <mat-hint class="text-warn-500">O email é obrigatório</mat-hint>
+              }
+            </mat-form-field>
+            <label for="name" class="f-w-500 text-start">Insira Sua Senha</label>
+            <mat-form-field appearance="outline" class="w-100 m-t-5">
+              <input
+                [type]="hide ? 'password' : 'text'"
+                id="password"
+                matInput
+                formControlName="password"
+                [ngClass]="{ 'is-invalid': submitted && formValues?.['password'].errors }"
+              />
+              @if (submitted && formValues?.['password'].errors) {
+                <mat-hint class="text-warn-500">A senha é obrigatória</mat-hint>
+              }
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+            </mat-form-field>
+            <div class="grid">
+              <button mat-flat-button color="primary" class="b-rad-20 m-t-15">Login</button>
+            </div>
+            @if (error) {
+              <div class="bg-warn-50 text-warn-500 p-10 m-t-15 mb-0">{{ error }}</div>
+            }
+          </form>
+          <div class="check-me m-t-20">
+            <div class="text-muted">Não tem uma conta?</div>
+            <a [routerLink]="['/authentication-1/register']" class="text-primary-500">Crie Sua Conta</a>
+          </div>
+        </app-card>
+      </div>
+    </div>
+  </div>
+</div>

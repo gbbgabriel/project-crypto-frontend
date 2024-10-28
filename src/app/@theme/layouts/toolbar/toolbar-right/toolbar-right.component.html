@@ -1,0 +1,36 @@
+<div class="header-button">
+  <button mat-button [matMenuTriggerFor]="user" aria-label="mode" class="header-item">
+    <a class="pc-head-link">
+      <img src="assets/images/user/avatar-2.png" alt="user-image" class="user-avatar" />
+    </a>
+  </button>
+  <mat-menu #user="matMenu" xPosition="before" class="dropdown-user-profile">
+    <div class="dropdown-header flex align-item-center justify-content-between">
+      <div class="user-title f-16 f-w-600">Profile</div>
+    </div>
+    <ng-scrollbar style="height: calc(100vh - 225px)" visibility="hover" [dir]="direction">
+      <div class="dropdown-body">
+        <div class="flex m-b-5">
+          <div class="topic-icon">
+            <img src="assets/images/user/avatar-2.png" alt="user-image" class="user-avatar" />
+          </div>
+          <div class="topic-description m-l-15">
+            <div class="user-name mat-body f-w-600">{{ currentUser?.name || 'Guest' }}</div>
+            <p class="mat-caption">{{ currentUser?.email || 'guest@example.com' }}</p>
+          </div>
+        </div>
+        <mat-divider class="m-b-15 m-t-15"></mat-divider>
+        <div class="grid m-b-15">
+          <button mat-flat-button color="primary" class="user-logout" (click)="logout()">
+            <div class="flex-inline align-item-center">
+              <svg class="pc-icon m-r-10">
+                <use xlink:href="assets/fonts/custom-icon.svg#custom-logout-1-outline"></use>
+              </svg>
+              Logout
+            </div>
+          </button>
+        </div>
+      </div>
+    </ng-scrollbar>
+  </mat-menu>
+</div>

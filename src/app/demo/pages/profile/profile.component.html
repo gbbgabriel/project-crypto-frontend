@@ -1,0 +1,87 @@
+<div class="row user-profile-details" *ngIf="userForm">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-md-4">
+        <app-card [showHeader]="false">
+          <div class="account-info">
+            <div class="user-status">
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="editUser()">Edit</button>
+              </mat-menu>
+            </div>
+            <div class="text-center m-t-15">
+              <div class="chat-avatar">
+                <img src="assets/images/user/avatar-1.png" alt="avatar" class="img-fluid wid-120" />
+              </div>
+              <div class="f-16 f-w-600 text-primary-500">{{ userForm.get('name')?.value }}</div>
+              <p class="text-muted">{{ userForm.get('email')?.value }}</p>
+              <mat-divider class="m-y-15"></mat-divider>
+            </div>
+            <mat-divider class="m-y-15"></mat-divider>
+          </div>
+        </app-card>
+      </div>
+      <div class="col-md-8">
+        <app-card [showHeader]="false">
+          <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+            <div class="row">
+              <div class="col-12">
+                <div class="m-b-10 f-w-600 text-primary-500">Editar Informações Pessoais</div>
+                <mat-divider class="m-b-20"></mat-divider>
+              </div>
+              <div class="col-sm-6">
+                <label for="name" class="f-w-500">Nome</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput formControlName="name" placeholder="Nome" />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-6">
+                <label for="email" class="f-w-500">Email</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                  <input matInput formControlName="email" placeholder="Email" disabled />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="text-end">
+              <button mat-stroked-button class="m-r-10" type="button" (click)="cancelEdit()">Cancelar</button>
+              <button mat-flat-button color="primary" type="submit">Salvar</button>
+            </div>
+          </form>
+        </app-card>
+      </div>
+    </div>
+
+    <!-- Histórico de Conversões -->
+    <div class="col-sm-12 mt-4">
+      <mat-card [showHeader]="true">
+        <mat-card-header>
+          <div class="card-header-container">
+            <h3 class="card-header-title text-primary-500">Histórico de Conversões</h3>
+          </div>
+        </mat-card-header>
+        <div *ngIf="isLoading" class="status-message">Carregando histórico...</div>
+        <div *ngIf="!isLoading && conversionHistory.length === 0" class="status-message">Nenhum histórico de conversão disponível.</div>
+        <div *ngIf="!isLoading && conversionHistory.length > 0">
+          <table class="user-history-table">
+            <thead>
+            <tr>
+              <th>Criptomoeda</th>
+              <th>Quantidade</th>
+              <th>BRL</th>
+              <th>USD</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let history of conversionHistory" class="history-row">
+              <td data-label="Criptomoeda">{{ history.crypto }}</td>
+              <td data-label="Quantidade">{{ history.amount }}</td>
+              <td data-label="BRL">{{ formatCurrency(history.valueBRL, 'BRL') }}</td>
+              <td data-label="USD">{{ formatCurrency(history.valueUSD, 'USD') }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="auth-main">
+  <div class="auth-wrapper version-1">
+    <div class="auth-form">
+      <div class="auth-background">
+        <div class="yellow-circle"></div>
+        <div class="red-circle"></div>
+      </div>
+      <div class="main-form">
+        <app-card [showHeader]="false" class="auth-form-card" padding="40">
+          <div class="text-center">
+            <a href="javascript:">
+              <img src="assets/images/logo-dark.png" alt="logo" style="width: 146px" />
+            </a>
+          </div>
+          <div class="separator"></div><br/>
+          <div class="text-center m-b-25 f-20 f-w-500">Cadastre-se com seu e-mail profissional</div>
+          <div *ngIf="errorMessage" class="alert alert-danger text-center">
+            {{ errorMessage }}
+          </div>
+          <div class="row text-start" [formGroup]="registerForm">
+            <div class="col-12">
+              <label for="name" class="f-w-500">Nome</label>
+              <mat-form-field appearance="outline" class="w-100 m-t-5">
+                <input matInput formControlName="name" placeholder="Nome" />
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <label for="email" class="f-w-500">E-mail</label>
+              <mat-form-field appearance="outline" class="w-100 m-t-5">
+                <input matInput formControlName="email" required placeholder="E-mail" />
+                <mat-error *ngIf="emailErrorMessage">{{ emailErrorMessage }}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <label for="password" class="f-w-500">Senha</label>
+              <mat-form-field appearance="outline" class="w-100 m-t-5">
+                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Senha" />
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Exibir/ocultar senha'">
+                  <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <label for="confirmPassword" class="f-w-500">Confirmar Senha</label>
+              <mat-form-field appearance="outline" class="w-100 m-t-5">
+                <input matInput formControlName="confirmPassword" [type]="coHide ? 'password' : 'text'" placeholder="Confirmar Senha" />
+                <button mat-icon-button matSuffix (click)="coHide = !coHide" [attr.aria-label]="'Exibir/ocultar senha'">
+                  <mat-icon>{{ coHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="passwordMismatchError">As senhas não coincidem</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="check-me">
+            <mat-checkbox class="float-start" required color="primary">Eu aceito os Termos e Condições</mat-checkbox>
+          </div>
+          <div class="grid">
+            <button mat-flat-button color="primary" class="b-rad-20 m-t-15" (click)="submit()">Cadastrar</button>
+          </div>
+          <div class="check-me m-t-15">
+            <div class="text-muted">Já possui uma conta?</div>
+            <a class="text-primary-500" [routerLink]="['/authentication-1/login']">Acessar Conta</a>
+          </div>
+        </app-card>
+      </div>
+    </div>
+  </div>
+</div>

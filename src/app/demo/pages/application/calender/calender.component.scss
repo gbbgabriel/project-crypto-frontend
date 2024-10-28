@@ -1,0 +1,61 @@
+// ========================== //
+//  calender css start        //
+// ========================== //
+
+::ng-deep.calender-table {
+  table,
+  th,
+  td {
+    border: 1px solid var(--accent-300);
+    border-collapse: collapse;
+    padding: 10px;
+  }
+  table {
+    width: 100%;
+  }
+
+  .input-date,
+  .select-color {
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+  }
+
+  .select-color {
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+      border: none;
+    }
+
+    .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control.mdc-text-field__input[type='color'] {
+      height: 32px;
+    }
+
+    .colorpick-eyedropper-input-trigger {
+      display: none;
+    }
+
+    .mat-mdc-form-field-infix {
+      padding: 0px;
+    }
+  }
+}
+
+::ng-deep.dark {
+  .cal-month-view {
+    background-color: var(--accent-200);
+
+    .cal-cell-row {
+      &:hover {
+        background-color: var(--accent-300);
+      }
+      .cal-cell:hover {
+        background-color: var(--accent-300);
+      }
+    }
+  }
+}
+
+// ========================== //
+//   calender css end         //
+// ========================== //
