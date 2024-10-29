@@ -67,6 +67,12 @@ export class DefaultComponent implements OnInit {
       startWith(''),
       map(value => this.filterCryptos(value || ''))
     );
+
+    // Observa mudanças no campo de criptomoeda e atualiza `selectedCrypto`
+    this.cryptoForm.get('crypto')!.valueChanges.subscribe(value => {
+      const selectedCrypto = this.cryptoList.find(crypto => crypto.id === value || crypto.name === value);
+      this.selectedCrypto = selectedCrypto ? selectedCrypto.id : '';
+    });
   }
 
   loadCryptoList(): void {
@@ -86,10 +92,6 @@ export class DefaultComponent implements OnInit {
   private filterCryptos(value: string): Array<{ id: string, name: string }> {
     const filterValue = value.toLowerCase();
     return this.cryptoList.filter(crypto => crypto.name.toLowerCase().includes(filterValue));
-  }
-
-  onCryptoInputChange(): void {
-    this.selectedCrypto = this.cryptoForm.value.crypto;
   }
 
   isCryptoInDropdown(): boolean {

@@ -38,6 +38,14 @@ export class RegisterComponent {
     return this.registerForm.get('email')?.hasError('email') ? 'E-mail inválido' : '';
   }
 
+  get passwordErrorMessage() {
+    const passwordControl = this.registerForm.get('password');
+    if (passwordControl?.hasError('required')) {
+      return 'A senha é obrigatória';
+    }
+    return passwordControl?.hasError('minlength') ? 'A senha deve ter pelo menos 6 caracteres' : '';
+  }
+
   get passwordMismatchError(): boolean {
     return this.registerForm.hasError('passwordMismatch') && !!this.registerForm.get('confirmPassword')?.touched;
   }
@@ -55,7 +63,7 @@ export class RegisterComponent {
   }
 
   submit() {
-    this.errorMessage = null; // Limpa a mensagem de erro antes de cada tentativa
+    this.errorMessage = null;
 
     if (this.registerForm.valid) {
       const { name, email, password } = this.registerForm.value;

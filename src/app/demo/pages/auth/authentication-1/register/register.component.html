@@ -38,6 +38,7 @@
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Exibir/ocultar senha'">
                   <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>
+                <mat-error *ngIf="passwordErrorMessage">{{ passwordErrorMessage }}</mat-error>
               </mat-form-field>
             </div>
             <div class="col-12">
